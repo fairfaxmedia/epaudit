@@ -21,12 +21,12 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_runtime_dependency "borderlands", "~> 0.1.0"
-  spec.add_runtime_dependency "persistent-cache", "~> 0.4.0"
-  spec.add_runtime_dependency "synthetics", "~> 0.1.0"
+  spec.add_runtime_dependency "borderlands", ">= 0.1"
+  spec.add_runtime_dependency "activesupport", ">= 4"
+  spec.add_runtime_dependency "synthetics", "~> 0.1"
   spec.add_runtime_dependency "aws-sdk", "~> 2"
   spec.add_runtime_dependency "net-dns", "~> 0.8"
-  spec.add_runtime_dependency "thor", "~> 0.19"
+  spec.add_runtime_dependency "thor", ">= 0.19"
   spec.add_development_dependency "bundler", "~> 1.13"
   spec.add_development_dependency "rake", "~> 10.0"
 end

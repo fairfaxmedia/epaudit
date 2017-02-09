@@ -7,7 +7,9 @@ module EPAudit
     def initialize(options = {})
       super options
       @resolver = Net::DNS::Resolver.new
-      resolver.nameservers = @config['nameservers']
+      if @config && @config['nameservers']
+        resolver.nameservers = @config['nameservers']
+      end
     end
     def audit(options = {})
       begin

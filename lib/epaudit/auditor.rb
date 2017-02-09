@@ -23,7 +23,15 @@ module EPAudit
     end
 
     def audit(endpoint)
-      @checks.map { |x| x.audit(:endpoint => endpoint) }
+      results = {}
+      @checks.each do |check|
+        r = check.audit(
+          :endpoint => endpoint,
+          :results => results
+        )
+       results[check.config_section] = r
+      end
+      results
     end
   end
 end

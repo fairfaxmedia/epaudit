@@ -14,8 +14,9 @@ module EPAudit
     desc 'audit', 'audit a single endpoint'
     def audit(endpoint)
       auditor = Auditor.new
-      [ auditor.audit(endpoint) ].flatten.each do |result|
-        $logger.info result.inspect
+      results = auditor.audit(endpoint)
+      results.keys.sort.each do |check|
+        $logger.info results[check].inspect
       end
     end
   end
