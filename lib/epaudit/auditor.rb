@@ -3,6 +3,7 @@ require 'epaudit/audit/dns'
 require 'epaudit/audit/synthetics'
 require 'epaudit/audit/cloudfront'
 require 'epaudit/audit/akamai'
+require 'epaudit/audit/sucuri'
 require 'epaudit/config'
 
 module EPAudit
@@ -12,6 +13,7 @@ module EPAudit
       'EPAudit::AuditSynthetics',
       'EPAudit::AuditCloudFront',
       'EPAudit::AuditAkamai',
+      'EPAudit::AuditSucuri',
     ]
     attr_reader :config
     attr_reader :checks
@@ -29,7 +31,7 @@ module EPAudit
           :endpoint => endpoint,
           :results => results
         )
-       results[check.config_section] = r
+        results[check.config_section] = r
       end
       results
     end
