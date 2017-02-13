@@ -20,5 +20,10 @@ module EPAudit
     def inspect
       "#{@source}: status='#{status}', items=#{[ data ].flatten.size}"
     end
+
+    # allow ERB rendering
+    def get_binding
+      binding()
+    end
   end
 end
