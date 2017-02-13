@@ -17,7 +17,7 @@ module EPAudit
       cache = File.join(home,@config_section)
       $logger.debug "opening cache file: #{cache}"
       Dir.mkdir(home)  unless Dir.exists?(home)
-      @cache = ActiveSupport::Cache::FileStore.new(cache, :expires_in => 1.minute)
+      @cache = ActiveSupport::Cache::FileStore.new(cache, :expires_in => 12.hours)
     end
 
     def audit(options = {})
