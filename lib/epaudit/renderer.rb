@@ -3,17 +3,16 @@ require 'erb'
 module EPAudit
   class Renderer
     def initialize(options = {})
-      @results      = options[:results] 
       @template_dir = options[:template_dir]
+      @templates = {}
     end
 
-    def render
-      templates = {}
+    def render(results)
       renderings = {}
-      @results.each_pair do |check,result|
-        templates[check]  ||= ERB.new(template(check))
+      results.each_pair do |check,result|
+        @templates[check]  ||= ERB.new(template(check))
         renderings[check] ||= []
-        renderings[check] << templates[check].result(result.get_binding)
+        renderings[check] << @templates[check].result(result.get_binding)
       end
       renderings
     end
