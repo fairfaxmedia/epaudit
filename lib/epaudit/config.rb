@@ -11,5 +11,8 @@ module EPAudit
     def [](x)
       @config[x]
     end
+    def dig(*args)
+      @config.dig(*args)
+    end
   end
 end
