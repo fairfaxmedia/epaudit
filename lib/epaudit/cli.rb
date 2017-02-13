@@ -1,8 +1,10 @@
 require "epaudit/version"
 require "epaudit/logger"
 require "epaudit/auditor"
+require "epaudit/renderer"
 
 require 'thor'
+require 'pp'
 
 module EPAudit
   class CLI < Thor
@@ -18,6 +20,13 @@ module EPAudit
       results.keys.sort.each do |check|
         $logger.info results[check].inspect
       end
+
+      renderer = Renderer.new(
+        :results      => results,
+        :template_dir => auditor.config.dig('epaudit','template_dir'),
+      )
+
+      pp renderer.render
     end
   end
 end
