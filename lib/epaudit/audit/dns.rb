@@ -21,7 +21,7 @@ module EPAudit
       AuditResult.new(
         :source => self.class,
         :status => ( data.answer.size > 0 ) ? AuditResult::OK : AuditResult::ERROR,
-        :data   => data,
+        :data   => [ data ],
       )
     end
   end
