@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
 
-require 'cli'
+require 'epaudit/cli'
 
 EPAudit::CLI.start(ARGV)
