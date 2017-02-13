@@ -19,7 +19,9 @@ module EPAudit
     attr_reader :checks
     def initialize(options = {})
       @config = Config.new(:filename => options[:config_filename])
-      @checks = CHECKS.map do |cn|
+      @skip = [ @config.dig('epaudit','skip') ].flatten
+      $logger.debug "skiplist: #{@skip.join(', ')}"
+      @checks = CHECKS.select{ |x| ! @skip.include?(x) }.map do |cn|
         Object::const_get(cn).new(:config => @config)
       end
     end
