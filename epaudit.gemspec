@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
   spec.summary       = %q{Audit HTTP endpoints}
   spec.description   = %q{Audit HTTP endpoints for a variety of issues}
   spec.homepage      = "https://github.com/fairfaxmedia/epaudit"
-  spec.license       = "MIT"
+  spec.license       = "Apache-2.0"
 
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|
     f.match(%r{^(test|spec|features)/})
